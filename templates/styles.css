@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-container {
+    width: 30%;
+    margin-right: 2%;
+}
+
+form {
+    width: 65%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+img{
+    width: 270px;
+    height: 322px;
+    position: absolute;
+    top: 236px;
+    left: 120px;
+}
+.image-container {
+    background-image: url("{{ url_for('static', filename='left.png')}}");
+    background-size: 270px;
+    padding: 0%;
+}
+.header {
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    size: 100px;
+}
+
+#another_logo {
+    float: left;
+    margin-right: 10px;
+    width: 98px;
+    height: 98px;
+    top: 73px;
+    left: 631px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+#hospital-form{
+    margin-left: 0%;
+}
+.overlay {
+    display: none;
+}
+
+.overlay.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

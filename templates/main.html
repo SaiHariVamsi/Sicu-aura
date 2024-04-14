@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Registrations</title>
+    <!-- Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ddd;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4facaf;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Hospital Registrations</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date and Time</th>
+                    <th>Hospital Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone No</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Pincode</th>
+                    <th>Registration Date</th>
+                    <th>Registration Number</th>
+                    <th>Image URL</th>
+                    <th>Emergency Ward</th>
+                    <th>Ambulance</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(data_arr[0] | length) %}
+                    <tr>
+                        <td>{{ data_arr[0][i] }}</td>
+                        <td>{{ data_arr[1][i] }}</td>
+                        <td>{{ data_arr[2][i] }}</td>
+                        <td>{{ data_arr[3][i] }}</td>
+                        <td>{{ data_arr[4][i] }}</td>
+                        <td>{{ data_arr[5][i] }}</td>
+                        <td>{{ data_arr[6][i] }}</td>
+                        <td>{{ data_arr[7][i] }}</td>
+                        <td>{{ data_arr[8][i] }}</td>
+                        <td>{{ data_arr[9][i] }}</td>
+                        <td><a href="{{ data_arr[10][i] }}" target="_blank">Link</a></td>
+                        <td>{{ data_arr[11][i] }}</td>
+                        <td>{{ data_arr[12][i] }}</td>
+                        <td>
+                            <select>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
