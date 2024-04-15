@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Form Login</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <main>
         <div class="container">
             <div class="image-container">
-                <img src="{{ url_for('static', filename='another_logo.png') }}" alt="">
+                <img src="{{ url_for('static', filename='sicu_aura_logo.png') }}" alt="">
                 <h3 id="caption">Feel safe everywhere</h3>
             </div>
             <div>
                 <div class="header">
-                    
-                    <br>
-                    <a href="/signup">Sign Up</a>
-                    <a href="#">Login</a>
+                    <img src="{{ url_for('static', filename='another_logo.png') }}" alt="">
+                    <div class="navbar">
+                        <p><a href="/signup">Sign Up</a> / <a href="#"> Login</a></p>
+                    </div> 
                 </div>
                 <h1>Welcome to Sicu -aura</h1>
                 <form action="/login" id="hospital-form" method="POST">
@@ -32,12 +32,11 @@
 
                     <input type="submit" value="Login">
                 </form>
+                <footer>
+                    <p>© Hospital Form. All rights reserved.</p>
+                </footer>  
             </div>
         </div>
-    </main>
-
-    <footer>
-        <p>© Hospital Form. All rights reserved.</p>
-    </footer>        
+    </main>      
 </body>
 </html>
