@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+form {
+    width: 65%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .image-container {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+.header {
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    size: 100px;
+
+}
+.header img{
+    width: 98px;
+    height: 98px;
+    top: 73px;
+    left: 400px;
+    gap: 0px;
+    opacity: 0px;
+    margin-right: 200px;
+}
+.navbar{
+    margin-right: 100px;
+}
+.navbar a{
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+}
+.image-container{
+    margin-left: 0;
+    background-image: url('/static/left.png');
+    width: 541px;
+    height: 680px;
+}
+.image-container img{
+    width: 270px;
+    height: 385px;
+    top: 236px;
+    left: 136px;
+    gap: 0px;
+    margin-left: 120px;
+    margin-top: 100px;
+    opacity: 0px;
+}
+.image-container h3{
+    margin-left: 170px;
+    color: white;
+}
+#another_logo {
+    float: left;
+    margin-right: 10px;
+    width: 98px;
+    height: 98px;
+    top: 73px;
+    left: 631px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+#hospital-form{
+    margin-left: 0%;
+}
+.overlay {
+    display: none;
+}
+
+.overlay.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer{
+    align-self: center;
+}
+.neat{
+    display: flex;
+}
+.neat input{
+    margin-right: 20px;
+    width: 320px;
+    height: 22px;
+}
+#capture-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#capture-btn:hover {
+    background-color: #333;
+}
+#capture-btn {
+    margin-top: 20px;
+}
+#camera-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#retake-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#retake-btn:hover {
+    background-color: #333;
+}
+#retake-btn {
+    margin-top: 20px;
+}
+#uploadImageButton {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#uploadImageButton:hover {
+    background-color: #333;
+}
+#uploadImageButton   {
+    margin-top: 20px;
+}
+#continue-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#continue-btn:hover {
+    background-color: #333;
+}
+#continue-btn {
+    margin-top: 20px;
+}
+#video {
+    width: 500px; 
+    height: 400px;
+}
+#captured-image {
+    max-width: 500px; 
+    max-height: 400px; 
+    align-items: center;
+}
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-container input[type="text"] {
+    flex: 1; 
+    margin-right: 10px; 
+}
