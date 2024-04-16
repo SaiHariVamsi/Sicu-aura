@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Registrations</title>
-    <!-- Styles -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,6 +39,15 @@
         th {
             background-color: #4facaf;
             color: white;
+            cursor: pointer;
+        }
+
+        th.sortable:hover {
+            background-color: #357d7f;
+        }
+
+        th.active {
+            background-color: #357d7f;
         }
 
         tr:nth-child(even) {
@@ -49,11 +57,95 @@
         tr:hover {
             background-color: #ddd;
         }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        .sort-arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 5px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .sort-arrow.up {
+            border-bottom: 5px solid black;
+        }
+
+        .sort-arrow.down {
+            border-top: 5px solid black;
+        }
+        .search-bar{
+            display: flex;
+        }
+        button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            width: 100px;
+            height: 50px;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+        .header{
+            display: flex;
+            background-color: black;
+        }
+        .header p{
+            margin-left: 900px;
+            color: white;
+        }
+        .header img {
+            width: 60px;
+            height: 62px;
+            top: 9px;
+            left: 100px;
+            gap: 0px;
+            opacity: 0px;
+            margin-left: 50px; 
+        }
+
+        #crop {
+            width: 132px;
+            height: 29px;
+            top: 26px;
+            left: 160px;
+            gap: 0px;
+            opacity: 0px;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
+    <header>
+        <div class="header">
+            <img src="{{ url_for('static', filename='sicu_aura_logo.png') }}" alt="">
+            <img id="crop" src="{{ url_for('static', filename='sicu_aura_logo_crop.png') }}" alt="">
+            <p>{{ data_arr[13] }}</p>
+            <form action="/logout">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </header>
     <div id="app">
         <h1>Hospital Registrations</h1>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by Hospital Name">
+            <button id="clearSearch">Clear Search</button>
+            <button id="sortDate">Sort by Time</button>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -100,5 +192,62 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var table = document.querySelector("table");
+            var tbody = table.querySelector("tbody");
+            var searchInput = document.getElementById("searchInput");
+            var clearSearchBtn = document.getElementById("clearSearch");
+            var sortDateBtn = document.getElementById("sortDate");
+            var dateHeader = table.querySelector("th:first-child");
+            var arrowSpan = dateHeader.querySelector(".sort-arrow");
+            var ascending = false;
+
+            // Sorting functionality
+            function sortTableByDate() {
+                var rows = Array.from(tbody.querySelectorAll("tr"));
+                ascending = !ascending;
+
+                rows.sort(function(rowA, rowB) {
+                    var dateA = new Date(rowA.cells[0].textContent);
+                    var dateB = new Date(rowB.cells[0].textContent);
+
+                    if (ascending) {
+                        return dateA - dateB;
+                    } else {
+                        return dateB - dateA;
+                    }
+                });
+
+                tbody.innerHTML = "";
+                rows.forEach(function(row) {
+                    tbody.appendChild(row);
+                });
+                arrowSpan.classList.toggle("up", ascending);
+                arrowSpan.classList.toggle("down", !ascending);
+            }
+            sortDateBtn.addEventListener("click", sortTableByDate);
+
+            clearSearchBtn.addEventListener("click", function() {
+                searchInput.value = "";
+                sortTableByDate();
+            });
+
+            searchInput.addEventListener("input", function() {
+                var filter = searchInput.value.toUpperCase();
+                var rows = tbody.querySelectorAll("tr");
+
+                rows.forEach(function(row) {
+                    var hospitalName = row.cells[1].textContent.toUpperCase();
+                    if (hospitalName.indexOf(filter) > -1) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
