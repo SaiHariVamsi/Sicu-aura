@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from supabase import create_client
 from datetime import datetime
-import webbrowser 
 
 app = Flask(__name__)
 
@@ -15,11 +14,11 @@ pranav = create_client(supabase_url, supabase_key)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('signup.html')
 
 @app.route('/signup')
 def show_signup():
-    return render_template('signup.html')
+    return render_template('signup.html')   
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -55,7 +54,7 @@ def signup():
     }
     response = pranav.table('registrations').insert([data]).execute()
     if 'error' not in response:
-        return redirect(url_for('login'))  # Redirect to login page upon successful signup
+        return redirect(url_for('login'))  
     else:
          return 'Error!'
 
@@ -100,6 +99,7 @@ def img_url():
         
 @app.route('/main', methods=['GET'])
 def main():
+    global res
     dts = []
     hsps = []
     emails = []
@@ -130,8 +130,12 @@ def main():
             hrps.append(x['image_url'])
             ewns.append(x['emergency_ward'])
             amb.append(x['ambulance'])
-    data_arr = [dts, hsps, emails, addresses, phone_nos, cities, states, pincodes, hrds, hrns, hrps, ewns, amb]
+    data_arr = [dts, hsps, emails, addresses, phone_nos, cities, states, pincodes, hrds, hrns, hrps, ewns, amb, res[0]]
     return render_template('main.html', data_arr=data_arr)
+
+@app.route('/logout')
+def logout():
+    return redirect(url_for('login'))
             
 if __name__ == '__main__':
     app.run(debug=True)
