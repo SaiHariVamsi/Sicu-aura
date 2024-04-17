@@ -1,0 +1,64 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hospital Form</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='sicu_aura_logo.png') }}" id="top" alt="">   
+                    <h3>Feel safe everywhere</h3>
+                </div>
+                <div>
+                    <div class="header">
+                        <img src="{{ url_for('static', filename='another_logo.png') }}" alt="">
+                        <div class="navbar">
+                            <p><a href="#">Sign Up</a> / <a href="/login"> Login</a></p>
+                        </div> 
+                    </div>
+                    <form action="/signup" id="hospital-form" method="POST">
+                        <div class="neat">
+                            <input type="text" id="hospital-name" name="hospital-name" placeholder="Hospital Name" required><br><br>
+                            <input type="email" id="email" name="email" placeholder="Email" required><br><br> 
+                        </div>
+                        <div class="neat">
+                            <input type="text" id="address" name="address" placeholder="Address" required><br><br>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required><br><br>
+                        </div>                     
+                        <div class="neat">
+                            <input type="text" id="city" name="city" placeholder="City" required><br><br>
+                            <input type="text" id="registration-number" name="registration-number" placeholder="Hospital Registration Number" required><br><br>
+                        </div>
+                        <div class="neat">
+                            <input type="text" id="state" name="state" placeholder="State" required><br><br>
+                            <input type="text" id="emergency-ward" name="emergency-ward" placeholder="Emergency Ward Number" required><br><br>
+                        </div>      
+                        <div class="neat">
+                            <input type="number" id="pincode" name="pincode" placeholder="Pincode" required><br><br>
+                            <div>
+                                <label for="registration-certificate">Registration certificate Upload</label>
+                            <input type="file" id="registration-certificate" name="registration-certificate" placeholder="Registration certificate Upload" required><br><br>
+                            </div>        
+                        </div>
+                        <div class="neat">
+                            <input type="date" id="registration-date" name="registration-date" placeholder="Hospital Registration Date" required><br><br>
+                            <input type="password" id="password" name="password" placeholder="Create Password" required><br><br>
+                        </div>
+                        <div class="neat">
+                            <input type="number" id="ambulance" name="ambulance" placeholder="Number Of Ambulance available" required><br><br>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required><br><br>
+                        </div>
+                        <input type="submit" value="Sign Up">
+                    </form>
+                    <footer>
+                        <p>© Hospital Form. All rights reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </main>    
+    </body>
+    </html>
